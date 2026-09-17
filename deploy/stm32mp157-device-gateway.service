@@ -1,0 +1,16 @@
+[Unit]
+Description=STM32MP157 Device Gateway
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+ExecStart=/usr/local/bin/device_gateway --config /etc/stm32mp157-device-gateway/gateway.conf
+Restart=on-failure
+RestartSec=3
+TimeoutStopSec=5
+
+[Install]
+WantedBy=multi-user.target
+
